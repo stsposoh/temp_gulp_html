@@ -1,0 +1,54 @@
+@charset "utf-8";
+
+@import "nib"  //mixins for stylus
+global-reset() //reset.css
+@import "_vars.styl"
+
+//Load Libs
+@import ".././app/libs/animate/animate.css"; 
+
+
+/*базовые стили*/
+* 
+  box-sizing border-box;
+  
+html
+  font-size: 100%; 
+
+body
+  font-smoothing: antialiased; 
+  scroll-behavior: smooth; 
+
+/*прибить футер*/
+html, body
+  height: 100%; 
+
+.wrap
+  min-height: 100%;
+  main
+    padding-bottom: 100px;
+
+footer
+  height: 100px;
+  margin-top: -100px;
+/*footer end*/
+
+
+//Custom Styles Here
+header
+  background-color #519fc1;
+  
+main
+  background-color main-color;
+  
+footer
+  background-color #458b00;
+
+
+
+
+
+
+//always bottom
+.hidden
+	display: none

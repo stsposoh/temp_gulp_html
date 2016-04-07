@@ -1,0 +1,9 @@
+{
+  "name": "temp_gulp",
+  "dependencies": {},
+  "devDependencies": {
+    "modernizr": "^3.3.1",
+    "jquery": "^2.2.3",
+    "html5shiv": "^3.7.3"
+  }
+}
