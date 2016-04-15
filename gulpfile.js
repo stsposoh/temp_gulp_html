@@ -67,9 +67,8 @@ gulp.task('styles', function () {
 
 gulp.task('libs', function () {
   return gulp.src([
-    'app/libs/modernizr/modernizr.js',
-    'app/libs/jquery/jquery.min.js',
-    'app/libs/animate/animate-css.js'
+    'app/libs/modernizr/src/Modernizr.js',
+    'app/libs/jquery/dist/jquery.min.js'
   ])
     .pipe(plumber({
       errorHandler: notify.onError(err => ({
