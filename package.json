@@ -1,0 +1,30 @@
+{
+  "name": "gulp_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "S.Posokhov",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.12.2",
+    "gulp": "git+https://git@github.com/gulpjs/gulp.git#4.0",
+    "gulp-cache": "^0.4.4",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssnano": "^2.1.1",
+    "gulp-debug": "^2.1.2",
+    "gulp-imagemin": "^2.4.0",
+    "gulp-newer": "^1.1.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-stylus": "^2.3.1",
+    "gulp-uglify": "^1.5.3",
+    "gulp-watch": "^4.3.5",
+    "imagemin-pngquant": "^4.2.2",
+    "nib": "^1.1.0"
+  }
+}
