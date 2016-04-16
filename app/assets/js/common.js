@@ -1,20 +1,7 @@
-$(function() {
+;(function() {
+  
 
-  
-  $('button').click(function() {
-    $('p').css('color','red');
-  })
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-	//SVG Fallback
+//SVG Fallback
 	if(!Modernizr.svg) {
 		$("img[src*='svg']").attr("src", function() {
 			return $(this).attr("src").replace(".svg", ".png");
@@ -43,4 +30,5 @@ $(function() {
 
 	$("img, a").on("dragstart", function(event) { event.preventDefault(); });
 
-});
+
+})();

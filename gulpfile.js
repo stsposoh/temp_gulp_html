@@ -35,7 +35,7 @@ gulp.task('img', function() {
 
 //сжать скрипт common.js
 gulp.task('js', function () {
-    gulp.src('app/assets/js/common.js') 
+  return gulp.src('app/assets/js/common.js') 
     .pipe(uglify())
     .pipe(gulp.dest('dist/js'));
 });
@@ -44,7 +44,7 @@ gulp.task('js', function () {
 
 
 gulp.task('styles', function () {
-  return gulp.src('app/styl/main.styl') 
+  return gulp.src('app/styles/main.styl') 
     .pipe(plumber({
       errorHandler: notify.onError(err => ({
         title: 'Styles',
@@ -58,7 +58,7 @@ gulp.task('styles', function () {
       'include css': true
     }))
         //.pipe(debug({title: 'stylus'}))
-    .pipe(cssnano())
+    .pipe(cssnano())  //если нужно сжать css
     .pipe(rename({suffix: '.min', prefix : ''}))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('dist/css'));
@@ -67,8 +67,9 @@ gulp.task('styles', function () {
 
 gulp.task('libs', function () {
   return gulp.src([
-    'app/libs/modernizr/src/Modernizr.js',
-    'app/libs/jquery/dist/jquery.min.js'
+    'app/assets/libs/jquery/dist/jquery.min.js',
+    'app/assets/libs/modernizr.min.js',
+    'app/assets/libs/lightgallery/dist/js/lightgallery.min.js'
   ])
     .pipe(plumber({
       errorHandler: notify.onError(err => ({
@@ -95,7 +96,7 @@ gulp.task('build', gulp.parallel('styles', 'assets', 'libs')
 
 
 gulp.task('watch', function() {
-  gulp.watch('app/styl/**/*.styl', gulp.series('styles'));
+  gulp.watch('app/styles/**/*', gulp.series('styles'));
   gulp.watch('app/assets/**/*.*', gulp.series('assets'));
 });
 

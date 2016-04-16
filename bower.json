@@ -2,7 +2,6 @@
   "name": "temp_gulp",
   "dependencies": {},
   "devDependencies": {
-    "modernizr": "^3.3.1",
     "jquery": "^2.2.3",
     "animate.css": "^3.5.1"
   }
