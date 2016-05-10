@@ -1,8 +1,0 @@
-{
-  "name": "temp_gulp",
-  "dependencies": {},
-  "devDependencies": {
-    "jquery": "^2.2.3",
-    "animate.css": "^3.5.1"
-  }
-}
