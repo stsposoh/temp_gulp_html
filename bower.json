@@ -1,0 +1,13 @@
+{
+  "name": "temp_gulp",
+  "dependencies": {
+    "jquery": "^2.2.3",
+    "animate.css": "^3.5.1",
+    "magnific-popup": "^1.1.0",
+    "lightgallery": "^1.2.18",
+    "waypoints": "^4.0.0",
+    "font-awesome": "^4.6.1",
+    "bxslider": "*",
+    "flipclock": "FlipClock#^0.7.7"
+  }
+}

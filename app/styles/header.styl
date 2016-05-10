@@ -1,0 +1,90 @@
+@charset "utf-8";
+@import "nib"
+@import "_vars.styl"
+@import "fonts.styl"
+/*RESET BROWSER'S STYLES*/
+global-reset()  //reset.css
+//or
+//@import "normalize.css"; 
+
+
+/*BASIC STYLES*/
+.clearfix
+  clearfix()
+
+* 
+  box-sizing border-box
+  
+html
+  font-size 100%
+  
+body
+  min-width 320px
+  color $base-font-color
+  font-size $base-font-size
+  line-height 1.6
+  font-family: "RobotoRegular", sans-serif
+  overflow-x: hidden
+  font-smoothing antialiased
+  scroll-behavior smooth
+
+  
+/*FOOTER TO BOTTOM*/
+html, body
+  height 100%
+
+.wrapper
+  min-height 100%
+  main
+    padding-bottom 100px
+
+footer
+  height 100px
+  margin-top -100px
+/*footer end*/
+
+//transition: all .25s ease
+
+/*============================================*/
+
+//Custom Styles Here
+header
+  background-color aquamarine
+
+main
+  background-color #bf7fff
+  p
+    font-family 'bickham_script_threeregular'
+    font-size 3rem
+  
+footer
+  background-color #d64c40
+
+
+  
+  
+
+
+  
+
+  
+  
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+/*============================================*/
+/*always bottom*/
+.hidden
+	display none !important
