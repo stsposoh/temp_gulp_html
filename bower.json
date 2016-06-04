@@ -8,6 +8,7 @@
     "waypoints": "^4.0.0",
     "font-awesome": "^4.6.1",
     "bxslider": "*",
-    "flipclock": "FlipClock#^0.7.7"
+    "flipclock": "FlipClock#^0.7.7",
+    "jQuery.equalHeights": "jquery.equalheights#^1.5.2"
   }
 }

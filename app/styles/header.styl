@@ -28,63 +28,73 @@ body
   font-smoothing antialiased
   scroll-behavior smooth
 
-  
-/*FOOTER TO BOTTOM*/
-html, body
-  height 100%
-
-.wrapper
-  min-height 100%
-  main
-    padding-bottom 100px
-
-footer
-  height 100px
-  margin-top -100px
-/*footer end*/
-
-//transition: all .25s ease
-
 /*============================================*/
 
 //Custom Styles Here
 header
-  background-color aquamarine
+  background-color #a3a3a3
 
 main
-  background-color #bf7fff
+  background-color #dad5e0
   p
-    font-family 'bickham_script_threeregular'
-    font-size 3rem
+    font-size 1.4rem
+    font-variant small-caps
+    font: 12pt/10pt  sans-serif;
   
-footer
-  background-color #d64c40
+.footer
+  height 100px
+  background-color #a3a3a3
+
+.external {
+  background-color: yellow
+}
+  
+.x
+  size 100px
+  border black
+  background-color red
+  transition background-color 1s
+  transform translateZ(0)
+  &:hover
+    background-color aquamarine
+
+    
+body
+  background-color: #333
+
+.toggle-mnu 
+  display: block
+  width: 28px
+  height: 28px
+  margin-top: 14px
+
+  span:after, span:before 
+    content: ""
+    position: absolute
+    left: 0
+    top: 9px
+
+  span:after
+    top: 18px
+
+  span 
+    position: relative
+    display: block
+
+  span, span:after, span:before
+    width: 100%
+    height: 2px
+    background-color: #fff
+    transition: all 0.3s
+    backface-visibility: hidden
+    border-radius: 2px
 
 
-  
-  
+  &.on span 
+    background-color: transparent
 
+  &.on span:before 
+    transform: rotate(45deg) translate(-1px, 0px)
 
-  
-
-  
-  
-  
-
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-
-
-/*============================================*/
-/*always bottom*/
-.hidden
-	display none !important
+  &.on span:after 
+    transform: rotate(-45deg) translate(6px, -7px)
