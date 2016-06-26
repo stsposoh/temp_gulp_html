@@ -1,24 +1,14 @@
 ;(function() {
-    'use-strict';
+  'use-strict';
 
- 
-  
-  $(".toggle-mnu").click(function() {
-  $(this).toggleClass("on");
-  $(".main-mnu").slideToggle();
-  return false;
-});
 
   
   //SVG Fallback
-  /*
   if(!Modernizr.svg) {
     $("img[src*='svg']").attr("src", function() {
       return $(this).attr("src").replace(".svg", ".png");
     });
   };
-  */
-
 
   //E-mail Ajax Send
   $("form").submit(function() { //Change
