@@ -34,7 +34,7 @@ gulp.task('styles', function () {
       'include css': true
     }))
     //.pipe(debug({title: 'stylus'}))
-    .pipe(cssnano())  //если нужно сжать css
+    //.pipe(cssnano())  //раскоментируйте если нужно сжать css
     .pipe(rename({suffix: '.min', prefix : ''}))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('dist/css'));
@@ -59,7 +59,7 @@ gulp.task('js', function () {
     .pipe(babel({
       presets: ['es2015']
     }))
-    //.pipe(uglify())   //сжатие common.js
+    //.pipe(uglify())   //расскоментируйте для сжатия common.js
     .pipe(gulp.dest('dist/js'));
 });
 
@@ -67,8 +67,8 @@ gulp.task('js', function () {
 gulp.task('libs', function () {
   return gulp.src([
     //все js библиотеки подключать сюда
-    /*'app/assets/libs/es5-shim/es5-shim.min.js',
-    'app/assets/libs/es5-shim/es5-sham.min.js',*/
+    'app/assets/libs/es5-shim/es5-shim.min.js',
+    'app/assets/libs/es5-shim/es5-sham.min.js',
     'app/assets/libs/jquery/dist/jquery.min.js',
     'app/assets/libs/modernizr/modernizr.min.js'
     //'app/assets/libs/owl.carousel/owl.carousel.min.js'
