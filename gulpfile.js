@@ -72,13 +72,11 @@ gulp.task('libs', function () {
     'app/assets/libs/jquery/dist/jquery.min.js',
     'app/assets/libs/modernizr/modernizr.min.js'
     //'app/assets/libs/owl.carousel/owl.carousel.min.js'
-    /*'app/assets/libs/jQuery.equalHeights/jquery.equalheights.min.js',*/
-    //'app/assets/libs/lightgallery/dist/js/lightgallery.min.js',
+    //'app/assets/libs/jQuery.equalHeights/jquery.equalheights.min.js',
     //'app/assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js',
     //'app/assets/libs/animateNumber/jquery.animateNumber.min.js',
     //'app/assets/libs/waypoints/lib/jquery.waypoints.min.js',
-    //'app/assets/libs/bxslider/jquery.bxSlider.min.js',
-    //'app/assets/libs/uglipop/uglipop.min.js',
+    //'app/assets/libs/masonry/dist/masonry.pkgd.min.js',
     //'app/assets/libs/flipclock/compiled/flipclock.min.js'
   ])
   .pipe(plumber({
