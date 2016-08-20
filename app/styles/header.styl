@@ -1,34 +1,11 @@
 @charset "utf-8";
 @import "nib"
 @import "_vars.styl"
-@import "fonts.styl"
+@import "_base.styl"
+
 /*RESET BROWSER'S STYLES*/
 global-reset()  //reset.css
-//or
-//@import "normalize.css"; 
 
-
-/*BASIC STYLES*/
-.clearfix
-  clearfix()
-
-* 
-  box-sizing border-box
-  
-html
-  font-size 100%
-  
-body
-  min-width 320px
-  color $base-font-color
-  font-size 16px
-  line-height 1.6
-  font-family: "OpenSansRegular", sans-serif
-  overflow-x: hidden
-  font-smoothing antialiased
-  scroll-behavior smooth
-
-/*============================================*/
 
 //Custom Styles Here
 header
@@ -38,4 +15,4 @@ main
   background-color #b2d3db
   
 footer
-  background-color #e6bbbb
+  background-color #e6bbbb 
