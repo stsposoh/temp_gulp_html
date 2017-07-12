@@ -1,0 +1,39 @@
+font-path = '/fonts/'
+
+mx-font-face($name, $src, $weight = false, $style = false)
+    @font-face
+        font-family $name
+        src url(font-path + $src + '/' + $name + '.eot')
+        src: url(font-path + $src + '/' + $name + '.eot?#iefix') format("embedded-opentype"), url(font-path + $src + '/' + $name + '.woff') format("woff"), url(font-path + $src + '/' + $name + '.ttf') format("truetype");
+        font-weight $weight if $weight
+        font-style $style if $style
+
+font-face ?= mx-font-face
+
+//font-face('name', 'src', weight, style)
+//font-face('RalewaySemiBold', 'RalewaySemiBold', 600, normal)
+
+
+normalize_list()
+    padding 0
+    margin 0
+    list-style-type none
+
+
+clear_display_inlines()
+    font-size 0
+
+    > *
+        vertical-align top
+        display inline-block
+        font-size font_size
+
+
+font_size_line_height(fs)
+    font-size fs
+    line-height fs + (fs / 1.5)
+
+
+truncate_text()
+    text-overflow ellipsis
+    overflow hidden

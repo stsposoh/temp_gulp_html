@@ -20,27 +20,27 @@ const gutil          = require('gulp-util' );
 const del            = require('del');
 const imagemin       = require('gulp-imagemin');
 const pngquant       = require('imagemin-pngquant');
-const fileinclude    = require('gulp-file-include');  //вставляет стили из header.min.css в index.html
-const gulpRemoveHtml = require('gulp-remove-html');
+//const fileinclude    = require('gulp-file-include');  //вставляет стили из header.min.css в index.html
+//const gulpRemoveHtml = require('gulp-remove-html');
 const ftp            = require('vinyl-ftp');
 
 
-gulp.task('styles', function () {
-  return gulp.src(['app/styles/main.styl', 'app/styles/header.styl', 'app/styles/fonts.styl']) 
+gulp.task('styl', function () {
+    return gulp.src('app/styl/common.styl')
     .pipe(plumber({
-      errorHandler: notify.onError(err => ({
-        title: 'Styles',
-        message: err.message
-      }))
+        errorHandler: notify.onError(err => ({
+            title: 'Styles',
+            message: err.message
+        }))
     }))
     .pipe(sourcemaps.init())
     .pipe(debug({title: 'src'}))
     .pipe(stylus({
-      use:[nib()],
-      'include css': true
+        use:[nib()],
+        'include css': true
     }))
     .pipe(debug({title: 'stylus'}))
-    .pipe(cssnano())  //сжать css
+    .pipe(cssnano())  //если нужно сжать css
     .pipe(rename({suffix: '.min', prefix : ''}))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('dist/css'));
@@ -48,76 +48,79 @@ gulp.task('styles', function () {
 
 
 gulp.task('assets', function() {
-  return gulp.src('app/assets/**/*.*', {since: gulp.lastRun('assets')})
+    return gulp.src('app/assets/**/*.*', {since: gulp.lastRun('assets')})
     .pipe(newer('dist'))
     .pipe(gulp.dest('dist'));
 });
 
 
 gulp.task('js', function () {
-  return gulp.src('app/js/common.js') 
+    return gulp.src('app/js/common.js')
     .pipe(plumber({
-      errorHandler: notify.onError(err => ({
-        title: 'JS',
-        message: err.message
-      }))
+        errorHandler: notify.onError(err => ({
+            title: 'JS',
+            message: err.message
+        }))
     }))
     .pipe(babel({
-      presets: ['es2015']
+        presets: ['es2015']
     }))
-    .pipe(uglify())   //сжать common.js
+    .pipe(uglify())   //сжатие common.js
     .pipe(gulp.dest('dist/js'));
 });
 
 
 gulp.task('libs', function () {
-  return gulp.src([
-    //все js библиотеки подключать сюда
-	'app/assets/libs/jquery/dist/jquery.min.js',
-    'app/assets/libs/es5-shim/es5-shim.min.js',
-    'app/assets/libs/es5-shim/es5-sham.min.js',
-    'app/assets/libs/modernizr/modernizr.min.js'
-    //'app/assets/libs/owl.carousel/owl.carousel.min.js',
-    //'app/assets/libs/jQuery.equalHeights/jquery.equalheights.min.js',
-    //'app/assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js',
-    //'app/assets/libs/animateNumber/jquery.animateNumber.min.js',
-    //'app/assets/libs/waypoints/lib/jquery.waypoints.min.js',
-    //'app/assets/libs/masonry/dist/masonry.pkgd.min.js'
-  ])
-  .pipe(plumber({
-    errorHandler: notify.onError(err => ({
-      title: 'Libs',
-      message: err.message
+    return gulp.src([
+        //все js библиотеки подключать сюда
+        'app/libs/jquery/dist/jquery.js'
+    ])
+    .pipe(plumber({
+        errorHandler: notify.onError(err => ({
+            title: 'Libs',
+            message: err.message
+        }))
     }))
-  }))
-  .pipe(concat('libs.js'))
-  .pipe(uglify())
-  .pipe(rename({suffix: '.min', prefix : ''}))
-  .pipe(gulp.dest('dist/js'));
+    .pipe(concat('libs.js'))
+    .pipe(uglify())
+    .pipe(rename({suffix: '.min', prefix : ''}))
+    .pipe(gulp.dest('dist/js'));
 });
 
 
-gulp.task('build', gulp.parallel('styles', 'assets', 'js', 'libs'));
+gulp.task('build', gulp.parallel('styl', 'assets', 'js', 'libs'));
 
 
 gulp.task('watch', function() {
-  gulp.watch('app/styles/**/*', gulp.series('styles'));
-  gulp.watch('app/js/**/*.js', gulp.series('js'));
-  gulp.watch('app/assets/**/*.*', gulp.series('assets'));
+    gulp.watch('app/styl/**/*', gulp.series('styl'));
+    gulp.watch('app/js/**/*.js', gulp.series('js'));
+    gulp.watch('app/assets/**/*.*', gulp.series('assets'));
 });
 
 
 gulp.task('browser-sync', function() {
-  browserSync.init({
-    server: 'dist',
-    notify: false
-  });
-  browserSync.watch('dist/**/*.*').on('change', browserSync.reload);
+    browserSync.init({
+        server: 'dist',
+        notify: false
+    });
+    browserSync.watch('dist/**/*.*').on('change', browserSync.reload);
 });
 
 
-gulp.task('removedist', function() { 
-  return del('dist'); 
+gulp.task('removedist', function() {
+    return del('dist', {force: true});
+});
+
+
+gulp.task('imagemin', function() {
+    return gulp.src('app/assets/img/**/*')
+        .pipe(cache(imagemin([
+            imagemin.gifsicle({interlaced: true}),
+            imagemin.jpegtran({progressive: true}),
+            imagemin.optipng({optimizationLevel: 5}),
+            imagemin.svgo({plugins: [{removeViewBox: true}]})
+        ])))
+        .pipe(gulp.dest('dist/img'));
 });
 
 
@@ -136,23 +139,40 @@ gulp.task('buildhtml', function() {
 });
 
 
-gulp.task('imagemin', function() {
-	return gulp.src('dist/img/**/*')
-		.pipe(cache(imagemin({
-			interlaced: true,
-			progressive: true,
-			svgoPlugins: [{removeViewBox: false}],
-			use: [pngquant()]
-		})))
-		.pipe(gulp.dest('dist/img')); 
-});
+/*
+
+ gulp.task('ftp', function() {
+ let conn = ftp.create({
+ host:      'ftp60.hostland.ru',
+ user:      'host1474862',
+ password:  'f4ceaa46',
+ parallel:  10,
+ log: gutil.log
+ });
+
+ var globs = 'dist/!**';
+
+ return gulp.src(globs, {since: gulp.lastRun('production')})
+ .pipe(newer('/polyfill.ru/htdocs/www'))
+ .pipe(conn.dest('/polyfill.ru/htdocs/www'));
+ });
+ */
+
+/*
+
+ gulp.task('production',
+ gulp.series(['imagemin','ftp'])
+ );
+ */
 
 
 //production
-gulp.task('production', gulp.series('removedist', 'assets', 'libs', 'styles', 'js', 'buildhtml', 'imagemin', 'removeHeaderCSS'));
+//gulp.task('production', gulp.series('removedist', 'assets', 'libs', 'styl', 'js', 'buildhtml', 'imagemin', 'removeHeaderCSS'));
+gulp.task('production', gulp.series('removedist', 'assets', 'libs', 'styl', 'js', 'imagemin'));
 
 
-gulp.task('default', 
-  gulp.series('build', 
-  gulp.parallel('watch', 'browser-sync'))
+
+gulp.task('default',
+    gulp.series(['removedist', 'build',
+        gulp.parallel('watch', 'browser-sync')])
 );

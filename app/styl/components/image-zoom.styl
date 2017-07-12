@@ -1,0 +1,29 @@
+.image-zoom
+    display none
+    position: fixed;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    z-index 999
+    padding-bottom: 69px;
+    text-align center
+
+    &-bg
+        position: absolute;
+        width: 100%;
+        top: 0;
+        bottom: 0;
+        background-color bg_grey_opacity
+        z-index 1000
+        cursor pointer
+
+    &-cont
+        position: relative;
+        z-index: 1001;
+        margin: auto;
+        top: 50px;
+        height: 100%;
+        overflow-x: hidden;
+        width: auto;
+        max-width: 65%;
+        display: inline-block;

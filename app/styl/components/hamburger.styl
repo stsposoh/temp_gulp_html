@@ -1,0 +1,37 @@
+.hamburger
+    position fixed
+    top 20px
+    right 20px
+    z-index 999
+    width 50px
+    height 44px
+    background-color color_icon_light_grey
+    transition: all 0.3s ease-in-out
+
+    &:hover
+
+        @media mq_desktop
+            cursor pointer
+
+    &__line
+        width: 40px;
+        height: 4px;
+        background-color: #ecf0f1;
+        display: block;
+        margin: 8px auto;
+        transition: all 0.3s ease-in-out;
+
+    &--is-active
+        animation: gamburger 0.6s forwards;
+
+        .hamburger__line
+            transition-delay: 0.2s;
+
+            &:nth-child(1)
+                transform: translateY(13px) rotate(45deg);
+
+            &:nth-child(2)
+                opacity: 0;
+
+            &:nth-child(3)
+                transform: translateY(-10px) rotate(-45deg);
